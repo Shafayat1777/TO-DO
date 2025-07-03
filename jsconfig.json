@@ -1,0 +1,23 @@
+// my-todo-app/jsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Important: This sets the base for path resolution
+    "paths": {
+      "@/*": ["./src/*"], // This maps '@' to your main app's src directory
+      "@sub-module/*": ["./Sub-Module/src/*"], // This maps '@sub-module' to the Sub-Module's src directory
+    },
+    // If you're using JSX in your JavaScript files (e.g., React components):
+    "jsx": "react-jsx",
+    // General recommendations for modern JS projects:
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler", // Or "node", "bundler" is often good for Vite
+    "allowJs": true, // Allow JavaScript files
+    "checkJs": false, // Set to true if you want type checking for JS files
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"], // Include all files under the src directory
+  "exclude": ["node_modules", "dist"] // Exclude these directories
+}

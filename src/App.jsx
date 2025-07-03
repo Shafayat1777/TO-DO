@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { Button } from "@sub-module/components/ui/button";
+import { Input } from "@sub-module/components/ui/input";
+import { ToDOForm } from "./form";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState([]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex flex-col items-center ">
+      {" "}
+      <h1 className="text-2xl font-bold mt-5">To-Do List</h1>
+      <div className="grid grid-cols-2 gap-8 w-[800px]">
+        <div className="mt-10 flex gap-4">
+          <ToDOForm setData={setData} />
+        </div>
+        <div className="mt-10 border rounded-md px-2 py-2.5">
+          <ul className=" space-y-2">
+            {data.map((item, index) => (
+              <li key={index} className="p-2 border rounded">
+                {index + 1}.<strong> {item.title}</strong>: {item.to_do}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
